@@ -35,8 +35,6 @@ const isPangram = function(text) {
         }
     }
 
-    console.log(letters)
-
     // after the loop ends, make sure all keys have at least a one, return true if so
     for (key in letters) {
         if (letters[key] === 0) {
@@ -49,5 +47,3 @@ const isPangram = function(text) {
 };
 
 module.exports = isPangram;
-
-console.log(isPangram("the_quick_brown_fox_jumps over_the_lazy_dog"))
