@@ -28,25 +28,26 @@ const isPangram = function(text) {
         'z': 0
     }
 
-    for (letter in letters) {
+    for (letter in text) {
         // if letter is inside the letter hash, add one to that key's value 
-        if (text.includes(letter)) {
-            letters[letter] += 1
+        if (letters[text[letter]] !== undefined) {
+            letters[text[letter]] += 1
         }
     }
 
+    console.log(letters)
+
     // after the loop ends, make sure all keys have at least a one, return true if so
-    if (Object.keys(letters).every((k) => letters[k] >= 1)) {
-        return true
+    for (key in letters) {
+        if (letters[key] === 0) {
+            return false // if at least one value is 0
+        }
     }
 
-    // otherwise, return false
-    return false
+    return true
+        // then all letters have been used, return true
 };
 
 module.exports = isPangram;
 
-const string = "foo";
-const substring = "oo";
-
-console.log(string.includes(substring));
+console.log(isPangram("the_quick_brown_fox_jumps over_the_lazy_dog"))
