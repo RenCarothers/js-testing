@@ -1,5 +1,5 @@
 const isPangram = function(text) {
-    const letters = {
+    let letters = {
         'a': 0, 
         'b': 0,
         'c': 0, 
@@ -30,14 +30,23 @@ const isPangram = function(text) {
 
     for (letter in letters) {
         // if letter is inside the letter hash, add one to that key's value 
+        if (text.includes(letter)) {
+            letters[letter] += 1
+        }
     }
 
     // after the loop ends, make sure all keys have at least a one, return true if so
+    if (Object.keys(letters).every((k) => letters[k] >= 1)) {
+        return true
+    }
 
     // otherwise, return false
-
-
-    return true
+    return false
 };
 
 module.exports = isPangram;
+
+const string = "foo";
+const substring = "oo";
+
+console.log(string.includes(substring));
